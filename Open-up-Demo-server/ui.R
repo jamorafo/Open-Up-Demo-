@@ -1,4 +1,6 @@
-#
+################################################################################
+# # Property of Polytechnique Montréal
+################################################################################
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
 #
@@ -7,8 +9,20 @@
 #    http://shiny.rstudio.com/
 #
 
+list.of.packages <- c("shiny","shinythemes","devtools")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(shiny)
 library(shinythemes)
+library(devtools)
+
+# 
+source_url("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/src/RuN.R")
+
+################################################################################
+# # Shiny presentation
+################################################################################
 
 # Define UI for application that draws a histogram
 shinyUI(navbarPage(title="", theme=shinytheme("united"),
