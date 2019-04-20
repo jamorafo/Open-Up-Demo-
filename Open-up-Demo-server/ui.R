@@ -96,10 +96,10 @@ shinyUI(navbarPage(title="", theme=shinytheme("united"),
                               #  )),
                             # Show a plot of the generated distribution
                               fluidRow(column(6,offset=0,tags$img(src='1600.gif',width = "92%"),
-                                              column(2,offset=0,actionButton("anomaly4","Sector 4")),
-                                              column(2,offset=1,actionButton("anomaly3","Sector 3")),
-                                              column(2,offset=1,actionButton("anomaly2","Sector 2")),
-                                              column(1,offset=1,actionButton("anomaly1","Sector 1"))
+                                              column(2,offset=0,actionButton("anomaly4","Sector 4", icon = icon("exclamation-circle"))),
+                                              column(2,offset=1,actionButton("anomaly3","Sector 3", icon = icon("exclamation-circle"))),
+                                              column(2,offset=1,actionButton("anomaly2","Sector 2", icon = icon("exclamation-circle"))),
+                                              column(1,offset=1,actionButton("anomaly1","Sector 1", icon = icon("exclamation-circle")))
                                               ),
                                      column(5,offset=0,tags$img(src='normalobs.gif',width = "120%"))),
                             
