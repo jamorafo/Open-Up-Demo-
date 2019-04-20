@@ -40,7 +40,7 @@ h = function(x1, x2){
 }
 
 
-#####Probabilite jointe
+#####Probabilité jointe
 f = function(x1, x2){
 
 	X=cbind(x1, x2)
@@ -111,7 +111,7 @@ G4 = function(u){
 # #  General Information Matrix
 ################################################################################
 
-######################################Fonction generique quantifiant la metrique choisie#########################
+######################################Fonction générique quantifiant la métrique choisie#########################
 #####f est une matrice (n,m)
 #h et une matrice (n,m)
 # G est une fonction est une fonction univariable
