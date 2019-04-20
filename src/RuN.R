@@ -15,7 +15,7 @@ if(length(new.packages)) require(new.packages)
 library(openxlsx)
 library(latex2exp)
 # Functions
-
+source("functions.R")
 ################################################################################
 # #  Paths
 ################################################################################
@@ -35,11 +35,9 @@ group <- 2
 fileName   <- paste("r/output_group",group,"s",s,"e_s",e.s,".RData", sep = "")
 pathFile   <- paste(outPath, fileName, sep = "")
 load(pathFile)
-setwd(directory)
-source("functions.R")
 
 # # New Observation
-fileName   <- "KPI_SPN.xlsx"
+fileName   <- "data.xlsx"
 pathFile   <- paste(inPath, fileName, sep = "")
 x.new      <- read.xlsx(pathFile,sheet = "new")
 x.training <- read.xlsx(pathFile,sheet = "input")
