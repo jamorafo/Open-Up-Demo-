@@ -184,8 +184,7 @@ descr <- function(y) c(min(y),median(y),max(y),mean(y),sd(y),sum(y))
 # Data pre-processing treatment
 
 preprocess_data <- function(data){
-  data <- data[,-c(id.columns,y.column)]
-  data <- data.frame(data[,filmin!=filmax])
+  data <- data[,colnames(x.train)]
   # Standardization (based on the min and the max of the training data)
   x.train.min <- sapply(x.train,min)
   x.train.max <- sapply(x.train,max)
