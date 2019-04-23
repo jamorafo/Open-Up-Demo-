@@ -8,6 +8,9 @@
 # 
 #    http://shiny.rstudio.com/
 #
+list.of.packages <- c("shiny","shinythemes","devtools")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
 
 list.of.packages <- c("shiny","shinythemes","devtools")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -66,18 +69,19 @@ shinyUI(navbarPage(title="", theme=shinytheme("united"),
                                       sliderInput("e.l",
                                                   "BOZ limits",
                                                   min = 0,
-                                                  max = 0.2,
+                                                  max = 0.1,
                                                   value = 0),
                                        sliderInput("e.s",
                                                "Empty Zones tolerance",
                                                min = 0,
-                                               max = 0.3,
+                                               max = 0.1,
                                                value = 0.1)
                             ,
                            fluidRow(h6(icon("copyright"),"Polytechnique Montréal")),
                             tags$img(src='poly.png',width = "80%")
                             ),
-                            mainPanel(plotOutput("boz",width = "105%"),
+                            mainPanel(fluidRow(column(3,br()),column(7,tableOutput('acctable'))),
+                                      plotOutput("boz",width = "105%"),
                                       br(),
                                       br(),
                                       fluidRow(column(5,br()),
