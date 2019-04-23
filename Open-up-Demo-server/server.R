@@ -6,7 +6,6 @@
 # 
 #    http://shiny.rstudio.com/
 #
-
 library(shiny)
 
 # Define server logic required to draw a histogram
@@ -112,11 +111,7 @@ shinyServer(function(input, output, session) {
   })
   
   
-  
-  image1 <- eventReactive(input$anomaly1, {
-    FALSE
-  })
-  # image1 creates a new PNG file each time Radius changes
+  # image1 
   output$image1 <- renderImage({
     input$anomaly1
     # Return a list containing information about the image

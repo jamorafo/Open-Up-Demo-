@@ -27,7 +27,8 @@ source_url("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/src/
 train_info <- "https://github.com/jamorafo/Open-Up-Demo-/blob/master/output/r/output_group2s0.48e_s0.1.RData?raw=True"
 source_data(train_info,rdata = T)
 
-load("/Users/andresmorales/Google_Drive_gmail/CIMARLAB/Open Up/Open-Up-Demo/output/r/output.best.RData")
+output.best.link <- "https://github.com/jamorafo/Open-Up-Demo-/blob/master/output/r/output.best.RData?raw=True"
+source_data(output.best.link,rdata = T)
 
 
 link.data <- getURL("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/input/data.csv")
