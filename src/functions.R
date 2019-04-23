@@ -282,3 +282,17 @@ anomaly_example = function(intruder){
   normal_obs.parallel = parallel.plane(stitching,normal_obs.sorted)
   OpenUp(normal_obs.parallel)
 }
+
+
+# 
+acc_table = function(data,s,e.s,e.l){
+if (e.l<0.02) e.l<-0.02
+if (e.s<0.02) e.s<-0.02
+filter <- data$s==round(s,2) & round(data$e.s,2)==round(e.s,2) & round(data$e.l,2)==round(e.l,2)
+out<- output.best[filter,c("accuracy","false.alarms","fault.detection")]*100
+out<- format(round(out,2), nsmall = 2)
+colnames(out) <- c("Accuracy (%)", "False alarms (%)","Failure to detect (%)")
+return(out)
+}
+
+

@@ -104,7 +104,7 @@ shinyServer(function(input, output, session) {
   )
   
   
-  
+  output$acctable <- renderTable(acc_table(output.best,s = s,e.s = input$e.s,e.l = input$e.l),align="c")
   
   output$currentTime <- renderText({
     invalidateLater(1000, session)
