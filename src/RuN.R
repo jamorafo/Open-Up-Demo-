@@ -2,7 +2,7 @@
 # #  "Confidentiel / Propriete de PolyMtl" 
 ################################################################################
 ################################################################################
-#rm(list=ls(all=TRUE))
+rm(list=ls(all=TRUE))
 ################################################################################
 # #  Libraries
 ################################################################################
@@ -50,8 +50,11 @@ x.train.sorted <- preprocess_data(x.training)
 x.new.parallel <- parallel.plane(stitching,x.new.sorted)
 x.train.parallel <- parallel.plane(stitching,x.train.sorted)
 
+# # The next line is a little adjustment to avoid confusions in the plot.
+id_bad_good  <- apply(x.train.parallel,MARGIN = 1,min)< -0.1 | apply(x.train.parallel,MARGIN = 1,min)> 1.1
+
 # # Location of the good observations
-id_good <- which(y==0)
+id_good <- which(y==0&!id_bad_good)
 # # Location of the bad observations
 id_bad <- which(y==1)
 
