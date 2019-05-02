@@ -35,6 +35,9 @@ source_data(acc_link,rdata = T)
 #acc_link <- "../output/r/output.best.RData"
 #load(acc_link)
 
+acc_link<- "https://github.com/jamorafo/Open-Up-Demo-/blob/master/output/r/output.best.RData?raw=True"
+source_data(acc_link,rdata = T)
+
 link.data <- getURL("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/input/data.csv")
 x.training <- read.csv(text = link.data)
 

@@ -8,7 +8,15 @@
 # 
 #    http://shiny.rstudio.com/
 #
+<<<<<<< HEAD
 list.of.packages <- c("shiny","shinythemes","devtools","shinyjs")
+=======
+list.of.packages <- c("shiny","shinythemes","devtools")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+list.of.packages <- c("shiny","shinythemes","devtools")
+>>>>>>> a2a0241733a42dcfdaf5cf1e281fa07679e8fd67
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
@@ -272,7 +280,11 @@ shinyUI(navbarPage(title="", theme=shinytheme("united"),
                            fluidRow(h6(icon("copyright"),"Polytechnique Montréal")),
                             tags$img(src='poly.png',width = "80%")
                             ),
+<<<<<<< HEAD
                             mainPanel(fluidRow(column(3,br()),column(4,tableOutput('acctable'))), column(3,br()),
+=======
+                            mainPanel(fluidRow(column(3,br()),column(7,tableOutput('acctable'))),
+>>>>>>> a2a0241733a42dcfdaf5cf1e281fa07679e8fd67
                                       plotOutput("boz",width = "105%"),
                                       br(),
                                       br(),
