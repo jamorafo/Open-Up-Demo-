@@ -2,12 +2,11 @@
 # #  "Confidentiel / Propriete de PolyMtl" 
 ################################################################################
 ################################################################################
-#rm(list=ls(all=TRUE))
+rm(list=ls(all=TRUE))
 ################################################################################
 # #  Libraries
 ################################################################################
-list.of.packages <- c("latex2exp","repmis","RCurl","httr","devtools",
-                      "roxygen2")
+list.of.packages <- c("latex2exp","repmis","RCurl","httr","devtools","roxygen2")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
@@ -19,6 +18,8 @@ library(devtools)
 library(roxygen2)
 # Functions
 source_url("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/src/functions.R")
+#source("functions.R")
+
 ################################################################################
 # # Data
 ################################################################################
@@ -26,18 +27,27 @@ source_url("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/src/
 # You need to add "?raw=True" to your link address in order to read it.
 train_info <- "https://github.com/jamorafo/Open-Up-Demo-/blob/master/output/r/output_group2s0.48e_s0.1.RData?raw=True"
 source_data(train_info,rdata = T)
+#train_info <- "../output/r/output_group2s0.48e_s0.1.RData"
+#load(train_info)
 
-output.best.link <- "https://github.com/jamorafo/Open-Up-Demo-/blob/master/output/r/output.best.RData?raw=True"
-source_data(output.best.link,rdata = T)
-
+acc_link<- "https://github.com/jamorafo/Open-Up-Demo-/blob/master/output/r/output.best.RData?raw=True"
+source_data(acc_link,rdata = T)
+#acc_link <- "../output/r/output.best.RData"
+#load(acc_link)
 
 link.data <- getURL("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/input/data.csv")
 x.training <- read.csv(text = link.data)
+
+#link.data <- "../input/data.csv"
+#x.training <- read.csv(link.data)
+
 
 # # New Observation
 
 link.new<- getURL("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/input/new.csv")
 x.new <- read.csv(text = link.new)
+#link.new <- "../input/new.csv"
+#x.new <- read.csv(link.new,sep = ",")
 
 ################################################################################
 # #  Pre-processing
@@ -51,8 +61,11 @@ x.train.sorted <- preprocess_data(x.training)
 x.new.parallel <- parallel.plane(stitching,x.new.sorted)
 x.train.parallel <- parallel.plane(stitching,x.train.sorted)
 
+# # The next line is a little adjustment to avoid confusions in the plot.
+id_bad_good  <- apply(x.train.parallel,MARGIN = 1,function(x) any(x<lower.limit)| any(x>upper.limit))
+sum(id_bad_good)
 # # Location of the good observations
-id_good <- which(y==0)
+id_good <- which(y==0&!id_bad_good)
 # # Location of the bad observations
 id_bad <- which(y==1)
 

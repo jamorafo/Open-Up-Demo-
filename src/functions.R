@@ -242,7 +242,7 @@ draw_obs = function(obs,lty=2,lwd=2.5,col="firebrick1"){
 
 #######
 
-OpenUp = function(obs,e.l=0,e.s=0.1){
+OpenUp = function(obs,e.l=0,e.s=0.1,emptybox=TRUE){
   op = par(mar=c(8,0,0,0))
   aa=seq(1,(ncol(x.new.sorted)-0.05),0.05)
   matplot(NA,type="l",lty=1, xlab = "", ylab = "", axes = FALSE, col="white",
@@ -253,7 +253,7 @@ OpenUp = function(obs,e.l=0,e.s=0.1){
   #draw_obs(obs,lty = 1,col = "grey70",lwd=2)
   BOZ(x.new.sorted,lower.limit,upper.limit,limits = FALSE)
   limBOZ(x.new.sorted,lower.limit,upper.limit,e.l=e.l)
-  EmptyZones(x.new,empty.zones.limits,e.s=e.s)
+  if (emptybox==TRUE) EmptyZones(x.new,empty.zones.limits,e.s=e.s)
   cross.bounds.matrix = ((lower.limit-e.l)>obs)|((upper.limit+e.l)<obs)
   where_cross = aa[which(cross.bounds.matrix)]
   floor_cross = floor(where_cross)
@@ -262,8 +262,8 @@ OpenUp = function(obs,e.l=0,e.s=0.1){
   if(sum(cross.bounds.matrix)==0) {draw_obs(obs,lty = 1,col = "black",lwd=2)
   axis(side = 1,at=1:ncol(x.new.sorted),labels=xlabels,font=2,cex.axis=2,padj=3)}
   if(sum(cross.bounds.matrix)>0) {
-    draw_obs(obs,lty = 1,col = "red",lwd=1)
-    axis(1, at = kpi_id, labels = xlabels[kpi_id], font=2,cex.axis=2,col="red",padj=3, lwd=2)
+    draw_obs(obs,lty = 2,col = "red",lwd=2)
+    axis(1, at = kpi_id, labels = xlabels[kpi_id], font=2,cex.axis=1.3,col="red",padj=3, lwd=2)
   }
   on.exit(par(op))
 }
@@ -272,7 +272,7 @@ OpenUp = function(obs,e.l=0,e.s=0.1){
 # #  Anomaly generation
 ################################################################################
 # intruder is the index of the variable in the plot to be affected for the noise.
-anomaly_example = function(intruder){
+anomaly_example = function(intruder,e.l=0,e.s=0,emptybox=TRUE){
   normal_id = sample(id_good,1)
   normal_obs = x.training[normal_id,]
   normal_obs.sorted = preprocess_data(normal_obs)
@@ -280,7 +280,7 @@ anomaly_example = function(intruder){
   eta = rbeta(length(intruder),shape1=2,shape2=5)
   normal_obs.sorted[intruder] = sample(c(1+e.l+eta ,-(e.l+eta)),length(intruder))
   normal_obs.parallel = parallel.plane(stitching,normal_obs.sorted)
-  OpenUp(normal_obs.parallel)
+  OpenUp(normal_obs.parallel,e.l = e.l,e.s = e.s,emptybox=emptybox)
 }
 
 # 
