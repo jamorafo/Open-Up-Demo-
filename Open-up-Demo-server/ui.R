@@ -8,26 +8,16 @@
 # 
 #    http://shiny.rstudio.com/
 #
-<<<<<<< HEAD
 list.of.packages <- c("shiny","shinythemes","devtools","shinyjs")
-=======
-list.of.packages <- c("shiny","shinythemes","devtools")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
-
-list.of.packages <- c("shiny","shinythemes","devtools")
->>>>>>> a2a0241733a42dcfdaf5cf1e281fa07679e8fd67
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
 library(shiny)
 library(shinythemes)
 library(devtools)
-#library(leaflet)
 library(shinyWidgets)
 library(shinyjs)
-#library(shinydashboard)
-# 
+
 
 source_url("https://raw.githubusercontent.com/jamorafo/Open-Up-Demo-/master/src/RuN.R")
 #setwd("/Users/andresmorales/Google_Drive_gmail/CIMARLAB/Open\ Up/Open-Up-Demo/src/")
@@ -280,11 +270,7 @@ shinyUI(navbarPage(title="", theme=shinytheme("united"),
                            fluidRow(h6(icon("copyright"),"Polytechnique Montréal")),
                             tags$img(src='poly.png',width = "80%")
                             ),
-<<<<<<< HEAD
                             mainPanel(fluidRow(column(3,br()),column(4,tableOutput('acctable'))), column(3,br()),
-=======
-                            mainPanel(fluidRow(column(3,br()),column(7,tableOutput('acctable'))),
->>>>>>> a2a0241733a42dcfdaf5cf1e281fa07679e8fd67
                                       plotOutput("boz",width = "105%"),
                                       br(),
                                       br(),

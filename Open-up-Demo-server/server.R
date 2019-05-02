@@ -250,24 +250,10 @@ shinyServer(function(input, output, session) {
     paste("Time:", Sys.time())
   })
   
-<<<<<<< HEAD
+
   output$currentTime2 <- renderText({
     invalidateLater(1000, session)
     paste("Time:", Sys.time())
   }) 
 
-=======
-  
-  # image1 
-  output$image1 <- renderImage({
-    input$anomaly1
-    # Return a list containing information about the image
-    return(list(src = '/Users/andresmorales/Google_Drive_gmail/CIMARLAB/Open\ Up/Open-Up-Demo/Open-up-Demo-server/www/normalobs.gif',
-         contentType = "image/png",
-         width="80%",
-         alt = "This is alternate text"))
-    
-  }, deleteFile = FALSE)
-  
->>>>>>> a2a0241733a42dcfdaf5cf1e281fa07679e8fd67
 })
