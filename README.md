@@ -9,7 +9,7 @@ Instructions to Run Open Up Demo:
 
 Option 1
 
-If you choose option 1 you will just need to file shiny.R located in OpenUpDemo/src/ folder. You will need to accept every library update and voilá! you can enjoy the demo. 
+If you choose option 1 you will just need to run the file shiny.R located in OpenUpDemo/src/ folder. You will need to accept every library update and voilá! you can enjoy the demo. 
 
 Option 2
 
