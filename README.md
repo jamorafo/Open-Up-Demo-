@@ -1,7 +1,7 @@
 # Open-Up-Demo-
 Demo for Open Up
 
-Steps to Run Open Up Demo:
+Instructions to Run Open Up Demo:
 
   1. Make sure that you have the latest R version installed in your computer. This code was updated with the R version 4.1.1 (2021-08-10). You can install or update 
      R from https://www.r-project.org/.
